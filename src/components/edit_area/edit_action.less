@@ -1,0 +1,49 @@
+.timeline-editor {
+
+  &-action {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #2f3134;
+
+    & &-left-stretch,
+    & &-right-stretch {
+      position: absolute;
+      top: 0;
+      width: 10px;
+      border-radius: 4px;
+      height: 100%;
+      overflow: hidden;
+
+      &::after {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        border-radius: 4px;
+        border-top: 28px solid transparent;
+        border-bottom: 28px solid transparent;
+      }
+    }
+
+    & &-left-stretch {
+      left: 0;
+      &::after {
+        left: 0;
+        content: "";
+        border-left: 7px solid rgba(255, 255, 255, .1);
+        border-right: 7px solid transparent;
+      }
+    }
+
+    & &-right-stretch {
+      right: 0;
+      &::after {
+        right: 0;
+        content: "";
+        border-right: 7px solid rgba(255, 255, 255, .1);
+        border-left: 7px solid transparent;
+      }
+    }
+  }
+}

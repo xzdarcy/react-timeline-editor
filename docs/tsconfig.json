@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "jsx": "react",
+    "baseUrl": "../",
+    "strict": false,
+    "paths": {
+      "react-timeline-animation-editor": ["src/index.tsx"]
+    },
+    "allowSyntheticDefaultImports": true
+  },
+}

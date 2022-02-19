@@ -1,0 +1,41 @@
+.timeline-editor{
+  &-time-area {
+    position: relative;
+    height: 32px;
+    flex: 0 0 auto;
+    .ReactVirtualized__Grid {
+      outline: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    &-interact {
+      position: absolute;
+      cursor: pointer;
+      left: 0;
+      top: 0;
+    }
+  }
+
+  &-time-unit {
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    box-sizing: content-box;
+    height: 4px !important;
+    bottom: 0 !important;
+    top: auto !important;
+
+    &-big {
+      height: 8px !important;
+    }
+  }
+
+  &-time-unit-scale {
+    color: fade(#fff, 60);
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translate(50%, -100%);
+  }
+}

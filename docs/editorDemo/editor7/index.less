@@ -1,0 +1,49 @@
+
+.timeline-editor-example7 {
+  display: flex;
+  width: 800px;
+  background-color: #191b1d;
+
+  & .timeline-list {
+    width: 150px;
+    margin-top: 42px;
+    height: 258px;
+    flex: 0 1  auto;
+    overflow: overlay;
+    padding: 0 10px;
+
+    &-item {
+      height: 32px;
+      padding: 2px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+
+      & .text {
+        color: #fff;
+        height: 28px;
+        width: 100%;
+        padding-left: 10px;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        background-color: #333;
+      }
+    }
+  }
+
+  .timeline-editor {
+    height: 300px;
+    flex: 1 1 auto;
+  
+    &-action {
+      height: 28px !important;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }  
+}
+
+

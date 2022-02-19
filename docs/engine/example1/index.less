@@ -1,0 +1,152 @@
+@import "~antd/dist/antd.css";
+
+@color-audio: #cd9541;
+@color-lottie: #7846a7;
+@color-text-basic: #fff;
+@fontsize-small: 10px;
+@border-radius: 4px;
+
+.timeline-editor-engine {
+
+  .player-panel {
+    width: 100%;
+    max-width: 800px;
+    height: 300px;
+    position: relative;
+
+    .lottie-ani {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+    }
+  }
+
+  .timeline-editor {
+    width: 100%;
+    max-width: 800px;
+    height: 300px;
+  
+    &-action {
+      height: 28px !important;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &-action {
+      border-radius: @border-radius;
+      &-effect-effect0 {
+        background-color: @color-audio;
+        background-image: url("/assets/soundWave.png");
+      }    
+      
+      &-effect-effect1 {
+        background-color: @color-lottie;
+      }    
+
+      &-effect-effect0,
+      &-effect-effect1 {
+        cursor: pointer;
+       
+        background-position: bottom;
+        background-repeat: repeat-x;
+
+        .effect0, .effect1 {
+          width: 100%;
+          height: 100%;
+          font-size: @fontsize-small;
+          color: @color-text-basic;
+          border-radius: @border-radius;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+    
+          &-text {
+            margin-left: 4px;
+            flex: 1 1 auto;
+            text-align: center;
+            display: flex;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+          }
+        
+        }
+
+        .timeline-editor-action-left-stretch{
+          &::after {  
+            border-left: 7px solid fade(#fff, 40);
+          }
+        }
+
+        .timeline-editor-action-right-stretch {
+          &::after {  
+            border-right: 7px solid fade(#fff, 40);
+          }
+        }
+
+       
+      }
+    }
+  }
+
+  .timeline-player {
+    height: 32px;
+    width: 100%;
+    max-width: 800px;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #3a3a3a;
+    color: #ddd;
+
+    .play-control {
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+      display: flex;
+      background-color: #666;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .time {
+      font-size: 12px;
+      margin: 0 20px;
+      width: 70px;
+    }
+
+    .rate-control {
+      justify-self: flex-end;
+
+      .ant-select {
+        width: 90px !important;
+  
+        .ant-select-selector {
+          border: none;
+          box-shadow: none !important;
+          background-color: transparent;
+          color: #ddd;
+  
+          .ant-select-selection-item {
+            font-size: 12px;
+            display: flex;
+            justify-content: center;
+          }
+        }
+  
+        &-arrow {
+          color: #ddd;
+        }
+      
+      }
+    }
+  }
+}
+
+

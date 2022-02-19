@@ -1,0 +1,40 @@
+.timeline-editor {
+
+  &:hover {
+
+    .timeline-editor-edit-area {
+
+      .ReactVirtualized__Grid {
+
+        &::-webkit-scrollbar {
+          height: 4px;
+        }
+      }
+    }
+  }
+
+  &-edit-area {
+    flex: 1 1 auto;
+    margin-top: 10px;
+    overflow: hidden;
+    position: relative;
+    .ReactVirtualized__Grid {
+      outline: none !important;
+      overflow: overlay !important;
+
+      &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+      }
+    
+      &::-webkit-scrollbar-track {
+        background-color: transparent !important;
+      }
+    
+      &::-webkit-scrollbar-thumb {
+        background: #313132;
+        border-radius: 16px;
+      }  
+    }
+  }
+}
