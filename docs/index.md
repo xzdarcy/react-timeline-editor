@@ -24,12 +24,12 @@ toc: 'menu'
 ## 快速上手
 
 ```
-npm install react-timeline-animation-editor
+npm install @xzdarcy/react-timeline-editor
 ```
 
 ```tsx | pure
 import React from 'react';
-import { Timeline } from 'react-timeline-animation-editor';
+import { Timeline } from '@xzdarcy/react-timeline-editor';
 
 export const TimelineEditor = () => {
   return (
