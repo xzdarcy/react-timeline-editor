@@ -273,7 +273,7 @@ toc: 'menu'
       </td>
     </tr>
      <tr>
-      <td>update</td>
+      <td>enter</td>
       <td>时间进入动作时执行回调</td>
       <td>
         <code>(param: EffectSourceParam) => void</code>
