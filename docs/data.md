@@ -283,7 +283,7 @@ toc: 'menu'
       </td>
     </tr>
      <tr>
-      <td>end</td>
+      <td>update</td>
       <td> 动作更新时回调</td>
       <td>
         <code>(param: EffectSourceParam) => void</code>
@@ -293,7 +293,7 @@ toc: 'menu'
       </td>
     </tr>
      <tr>
-      <td>end</td>
+      <td>leave</td>
       <td> 时间离开动作时执行回调</td>
       <td>
         <code>(param: EffectSourceParam) => void</code>
@@ -303,7 +303,7 @@ toc: 'menu'
       </td>
     </tr>
      <tr>
-      <td>end</td>
+      <td>stop</td>
       <td> 在当前动作时间区域停止播放时回调</td>
       <td>
         <code>(param: EffectSourceParam) => void</code>
