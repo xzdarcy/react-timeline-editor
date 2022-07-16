@@ -1,10 +1,5 @@
-import React, { FC, useEffect, useRef, useState } from 'react';
-import {
-  AutoSizer,
-  Grid,
-  GridCellRenderer,
-  OnScrollParams,
-} from 'react-virtualized';
+import React, { FC, useEffect, useImperativeHandle, useRef, useState } from 'react';
+import { AutoSizer, Grid, GridCellRenderer, OnScrollParams } from 'react-virtualized';
 import { TimelineRow } from '../../interface/action';
 import { CommonProp } from '../../interface/common_prop';
 import { EditData } from '../../interface/timeline';
@@ -28,7 +23,12 @@ export type EditAreaProps = CommonProp & {
   deltaScrollLeft: (scrollLeft: number) => void;
 };
 
-export const EditArea: FC<EditAreaProps> = (props) => {
+/** edit area ref数据 */
+export interface EditAreaState {
+  domRef: React.MutableRefObject<HTMLDivElement>
+}
+
+export const EditArea = React.forwardRef<EditAreaState, EditAreaProps>((props, ref) => {
   const {
     editorData,
     rowHeight,
@@ -50,18 +50,18 @@ export const EditArea: FC<EditAreaProps> = (props) => {
     onActionResizeStart,
     onActionResizing,
   } = props;
-  const {
-    dragLineData,
-    initDragLine,
-    updateDragLine,
-    disposeDragLine,
-    defaultGetAssistPosition,
-    defaultGetMovePosition,
-  } = useDragLine();
+  const { dragLineData, initDragLine, updateDragLine, disposeDragLine, defaultGetAssistPosition, defaultGetMovePosition } = useDragLine();
   const [top, setTop] = useState(scrollTop);
   const editAreaRef = useRef<HTMLDivElement>();
   const gridRef = useRef<Grid>();
   const heightRef = useRef(-1);
+
+  // ref 数据
+  useImperativeHandle(ref, () => ({
+    get domRef() {
+      return editAreaRef;
+    }
+  }));
 
   const handleInitDragLine: EditData['onActionMoveStart'] = (data) => {
     if (dragLine) {
@@ -72,7 +72,7 @@ export const EditArea: FC<EditAreaProps> = (props) => {
           row: data.row,
           editorData,
         });
-      const cursorLeft = parserTimeToPixel(cursorTime, {scaleWidth, scale, startLeft});
+      const cursorLeft = parserTimeToPixel(cursorTime, { scaleWidth, scale, startLeft });
       const assistPositions = defaultGetAssistPosition({
         editorData,
         assistActionIds,
@@ -202,4 +202,4 @@ export const EditArea: FC<EditAreaProps> = (props) => {
       {dragLine && <DragLines scrollLeft={scrollLeft} {...dragLineData} />}
     </div>
   );
-};
+});

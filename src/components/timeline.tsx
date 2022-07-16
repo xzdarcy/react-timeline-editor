@@ -31,6 +31,7 @@ export const Timeline = React.forwardRef<TimelineState, TimelineEditor>((props, 
 
   const engineRef = useRef<TimelineEngine>(new TimelineEngine());
   const domRef = useRef<HTMLDivElement>();
+  const areaRef = useRef<HTMLDivElement>();
   const scrollSync = useRef<ScrollSync>();
 
   // 编辑器数据
@@ -143,6 +144,7 @@ export const Timeline = React.forwardRef<TimelineState, TimelineEditor>((props, 
             />
             <EditArea
               {...checkedProps}
+              ref={(ref) => ((areaRef.current as any) = ref?.domRef.current)}
               disableDrag={disableDrag || isPlaying}
               editorData={editorData}
               cursorTime={cursorTime}
@@ -167,6 +169,9 @@ export const Timeline = React.forwardRef<TimelineState, TimelineEditor>((props, 
                 setCursor={handleSetCursor}
                 cursorTime={cursorTime}
                 editorData={editorData}
+                areaRef={areaRef}
+                scrollSync={scrollSync}
+                deltaScrollLeft={autoScroll && handleDeltaScrollLeft}
               />
             )}
           </>

@@ -17,7 +17,7 @@ export type EditActionProps = CommonProp & {
   handleTime: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => number;
   areaRef: React.MutableRefObject<HTMLDivElement>;
   /** 设置scroll left */
-  deltaScrollLeft?: (scrollLeft: number) => void;
+  deltaScrollLeft?: (delta: number) => void;
 };
 
 export const EditAction: FC<EditActionProps> = ({

@@ -93,8 +93,8 @@ export const RowDnd = React.forwardRef<RowRndApi, RowRndProps>(
       onDragStart && onDragStart();
     };
 
-    const move = (param: { preLeft: number; preWidth: number }) => {
-      const { preLeft, preWidth } = param;
+    const move = (param: { preLeft: number; preWidth: number; scrollDelta?: number }) => {
+      const { preLeft, preWidth, scrollDelta } = param;
       const distance = isAdsorption.current ? adsorptionDistance : grid;
       if (Math.abs(deltaX.current) >= distance) {
         const count = parseInt(deltaX.current / distance + '');
@@ -128,12 +128,15 @@ export const RowDnd = React.forwardRef<RowRndApi, RowRndProps>(
         else if (curLeft + preWidth > bounds.right) curLeft = bounds.right - preWidth;
 
         if (onDrag) {
-          const ret = onDrag({
-            lastLeft: preLeft,
-            left: curLeft,
-            lastWidth: preWidth,
-            width: preWidth,
-          });
+          const ret = onDrag(
+            {
+              lastLeft: preLeft,
+              left: curLeft,
+              lastWidth: preWidth,
+              width: preWidth,
+            },
+            scrollDelta,
+          );
           if (ret === false) return;
         }
 
@@ -152,7 +155,7 @@ export const RowDnd = React.forwardRef<RowRndApi, RowRndProps>(
           const preLeft = parseFloat(left);
           const preWidth = parseFloat(width);
           deltaX.current += delta;
-          move({ preLeft, preWidth });
+          move({ preLeft, preWidth, scrollDelta: delta });
         });
         if (!result) return;
       }
@@ -185,9 +188,9 @@ export const RowDnd = React.forwardRef<RowRndApi, RowRndProps>(
     };
 
     const resize = (param: { preLeft: number; preWidth: number; dir: 'left' | 'right' }) => {
-      const {dir, preWidth, preLeft} = param;
+      const { dir, preWidth, preLeft } = param;
       const distance = isAdsorption.current ? adsorptionDistance : grid;
-      
+
       if (dir === 'left') {
         // 拖动左侧
         if (Math.abs(deltaX.current) >= distance) {
@@ -282,7 +285,7 @@ export const RowDnd = React.forwardRef<RowRndApi, RowRndProps>(
 
     const handleResize = (e: ResizeEvent) => {
       const target = e.target;
-      const dir =  e.edges?.left ? 'left' : 'right';
+      const dir = e.edges?.left ? 'left' : 'right';
 
       if (deltaScrollLeft && parentRef?.current) {
         const result = dealResizeAutoScroll(e, dir, (delta) => {
@@ -292,7 +295,7 @@ export const RowDnd = React.forwardRef<RowRndApi, RowRndProps>(
           const preLeft = parseFloat(left);
           const preWidth = parseFloat(width);
           deltaX.current += delta;
-          resize({preLeft, preWidth, dir})
+          resize({ preLeft, preWidth, dir });
         });
         if (!result) return;
       }
@@ -302,7 +305,7 @@ export const RowDnd = React.forwardRef<RowRndApi, RowRndProps>(
       const preWidth = parseFloat(width);
 
       deltaX.current += dir === 'left' ? e.deltaRect.left : e.deltaRect.right;
-      resize({preLeft, preWidth, dir})
+      resize({ preLeft, preWidth, dir });
     };
     const handleResizeStop = (e: ResizeEvent) => {
       deltaX.current = 0;

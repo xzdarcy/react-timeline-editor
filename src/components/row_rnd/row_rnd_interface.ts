@@ -10,6 +10,7 @@ type EventData = {
 export type RndDragStartCallback = () => void;
 export type RndDragCallback = (
   data: EventData,
+  scrollDelta?: number,
 ) => boolean | void;
 export type RndDragEndCallback = (data: Pick<EventData, 'left' | 'width'>) => void;
 
