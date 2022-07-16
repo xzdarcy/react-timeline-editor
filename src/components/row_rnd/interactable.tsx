@@ -1,6 +1,8 @@
-import { DraggableOptions, Interactable, ResizableOptions, ResizeEvent, DragEvent } from "@interactjs/types";
+import { DraggableOptions } from "@interactjs/actions/drag/plugin";
+import { ResizableOptions } from "@interactjs/actions/resize/plugin";
+import { DragEvent, Interactable } from "@interactjs/types";
 import interact from "interactjs";
-import { cloneElement, FC, ReactElement, useEffect, useRef, useImperativeHandle } from "react";
+import { cloneElement, FC, ReactElement, useEffect, useRef } from "react";
 
 export const InteractComp: FC<{
   interactRef?: React.MutableRefObject<Interactable>;

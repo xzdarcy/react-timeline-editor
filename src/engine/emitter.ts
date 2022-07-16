@@ -13,7 +13,7 @@ export class Emitter<EventTypes> {
   on<K extends keyof EventTypes>(names: K | K[], handler: (args: EventTypes[K]) => boolean | unknown): this {
     const events = names instanceof Array ? names : (names as string).split(' ');
 
-    (events as string[]).forEach(name => {
+    (events as string[]).forEach((name) => {
       if (!this.events[name]) {
         throw new Error(`The event ${name} does not exist`);
       }
@@ -25,7 +25,7 @@ export class Emitter<EventTypes> {
 
   trigger<K extends keyof EventTypes>(name: K, params: EventTypes[K]) {
     if (!(name in this.events)) {
-      throw new Error(`The event ${name} cannot be triggered`);
+      throw new Error(`The event ${String(name)} cannot be triggered`);
     }
 
     return this.events[name as string].reduce((r: boolean, e: CallableFunction) => e(params) !== false && r, true); // return false if at least one event is false
@@ -44,12 +44,12 @@ export class Emitter<EventTypes> {
   }
 
   off<K extends keyof EventTypes>(name: K, handler?: (args: EventTypes[K]) => boolean | unknown) {
-    if(this.events[name as string]) {
-      const listener = this.events[name as string]
-      if(!handler) this.events[name as string] = [];
+    if (this.events[name as string]) {
+      const listener = this.events[name as string];
+      if (!handler) this.events[name as string] = [];
       else {
         const index = listener.indexOf(handler);
-        if(index !== -1) listener.splice(index, 1);
+        if (index !== -1) listener.splice(index, 1);
       }
     }
   }

@@ -48,6 +48,8 @@
   },
   "devDependencies": {
     "@types/howler": "^2.2.4",
+    "@types/react": "^17.0.17",
+    "@types/react-dom": "^17.0.17",
     "@umijs/test": "^3.0.5",
     "dumi": "^1.0.17",
     "father-build": "^1.17.2",
@@ -57,6 +59,7 @@
     "lottie-web": "^5.8.1",
     "prettier": "^2.2.1",
     "react": "^17.0.0",
+    "react-dom": "^17.0.0",
     "yorkie": "^2.0.0"
   }
 }
