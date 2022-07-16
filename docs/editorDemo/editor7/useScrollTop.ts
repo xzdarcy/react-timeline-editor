@@ -1,4 +1,4 @@
-import { TimelineEditor } from "react-timeline-animation-editor";
+import { TimelineEditor } from "@xzdarcy/react-timeline-editor";
 import { useEffect, useRef, useState } from "react";
 
 export function useScrollTop() {

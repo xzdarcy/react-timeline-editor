@@ -1,5 +1,5 @@
 import { CaretRightOutlined, PauseOutlined } from '@ant-design/icons';
-import { TimelineState } from 'react-timeline-animation-editor';
+import { TimelineState } from '@xzdarcy/react-timeline-editor';
 import { Select } from 'antd';
 import React, { FC, useEffect, useState } from 'react';
 import lottieControl from './lottieControl';

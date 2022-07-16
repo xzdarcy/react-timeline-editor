@@ -51,7 +51,7 @@ group:
 + autoEnd (可选): 是否在播完全部actions后自动停止
 
 ```ts | pure
-import { TimelineEngine } from 'react-timeline-animation-editor';
+import { TimelineEngine } from '@xzdarcy/react-timeline-editor';
 const engine = new TimelineEngine();
 engine.play({autoEnd: true})
 ```
@@ -65,7 +65,7 @@ engine.play({autoEnd: true})
 你可以监听运行器提供的一些事件，并响应逻辑
 
 ```ts | pure
-import { TimelineEngine } from 'react-timeline-animation-editor';
+import { TimelineEngine } from '@xzdarcy/react-timeline-editor';
 const engine = new TimelineEngine();
 ```
 

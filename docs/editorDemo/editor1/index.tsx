@@ -1,4 +1,4 @@
-import { Timeline } from 'react-timeline-animation-editor';
+import { Timeline } from '@xzdarcy/react-timeline-editor';
 import { Col, Input, Row } from 'antd';
 import { cloneDeep } from 'lodash';
 import React, { useState } from 'react';

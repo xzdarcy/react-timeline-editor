@@ -1,4 +1,4 @@
-import { Timeline, TimelineAction } from 'react-timeline-animation-editor';
+import { Timeline, TimelineAction } from '@xzdarcy/react-timeline-editor';
 import { cloneDeep } from 'lodash';
 import React, { useEffect, useRef, useState } from 'react';
 import './index.less';
