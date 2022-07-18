@@ -21,10 +21,10 @@ const TimelinePlayer: FC<{
     timelineState.current.listener.on('setTimeByTick', ({ time }) => setTime(time));
 
     return () => {
+      lottieControl.destroy();
       if (!timelineState.current) return;
       timelineState.current.pause();
       timelineState.current.listener.offAll();
-      lottieControl.destroy();
     };
   }, []);
 
@@ -65,7 +65,6 @@ const TimelinePlayer: FC<{
           ))}
         </Select>
       </div>
-      
     </div>
   );
 };
