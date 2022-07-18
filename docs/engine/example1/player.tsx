@@ -1,7 +1,7 @@
 import { CaretRightOutlined, PauseOutlined } from '@ant-design/icons';
 import { TimelineState } from '@xzdarcy/react-timeline-editor';
 import { Select } from 'antd';
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useLayoutEffect, useState } from 'react';
 import lottieControl from './lottieControl';
 
 const { Option } = Select;
@@ -15,16 +15,17 @@ const TimelinePlayer: FC<{
 
   useEffect(() => {
     if (!timelineState.current) return;
-    timelineState.current.listener.on('play', () => setIsPlaying(true));
-    timelineState.current.listener.on('paused', () => setIsPlaying(false));
-    timelineState.current.listener.on('afterSetTime', ({ time }) => setTime(time));
-    timelineState.current.listener.on('setTimeByTick', ({ time }) => setTime(time));
+    const engine = timelineState.current;
+    engine.listener.on('play', () => setIsPlaying(true));
+    engine.listener.on('paused', () => setIsPlaying(false));
+    engine.listener.on('afterSetTime', ({ time }) => setTime(time));
+    engine.listener.on('setTimeByTick', ({ time }) => setTime(time));
 
     return () => {
+      if (!engine) return;
+      engine.pause();
+      engine.listener.offAll();
       lottieControl.destroy();
-      if (!timelineState.current) return;
-      timelineState.current.pause();
-      timelineState.current.listener.offAll();
     };
   }, []);
 
