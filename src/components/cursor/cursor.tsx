@@ -2,7 +2,7 @@ import React, { FC, useEffect, useRef, useState } from 'react';
 import { ScrollSync } from 'react-virtualized';
 import { CommonProp } from '../../interface/common_prop';
 import { prefix } from '../../utils/deal_class_prefix';
-import { parserTimeToPixel } from '../../utils/deal_data';
+import { parserPixelToTime, parserTimeToPixel } from '../../utils/deal_data';
 import { RowDnd } from '../row_rnd/row_rnd';
 import { RowRndApi } from '../row_rnd/row_rnd_interface';
 import './cursor.less';
@@ -21,7 +21,21 @@ export type CursorProps = CommonProp & {
   scrollSync: React.MutableRefObject<ScrollSync>;
 };
 
-export const Cursor: FC<CursorProps> = ({ disableDrag, cursorTime, setCursor, startLeft, scaleCount, scaleWidth, scale, scrollLeft, scrollSync, areaRef, deltaScrollLeft }) => {
+export const Cursor: FC<CursorProps> = ({
+  disableDrag,
+  cursorTime,
+  setCursor,
+  startLeft,
+  scaleCount,
+  scaleWidth,
+  scale,
+  scrollLeft,
+  scrollSync,
+  areaRef,
+  deltaScrollLeft,
+  onCursorDragStart,
+  onCursorDragEnd,
+}) => {
   const rowRnd = useRef<RowRndApi>();
   const [draggingLeft, setDraggingLeft] = useState<undefined | number>();
   const [width, setWidth] = useState(Number.MAX_SAFE_INTEGER);
@@ -62,11 +76,13 @@ export const Cursor: FC<CursorProps> = ({ disableDrag, cursorTime, setCursor, st
       enableDragging={!disableDrag}
       enableResizing={false}
       onDragStart={() => {
+        onCursorDragStart && onCursorDragStart(cursorTime);
         setDraggingLeft(parserTimeToPixel(cursorTime, { startLeft, scaleWidth, scale }) - scrollLeft);
       }}
       onDragEnd={() => {
         setCursor({ left: draggingLeft + scrollLeft });
         setDraggingLeft(undefined);
+        onCursorDragEnd && onCursorDragEnd(parserPixelToTime(draggingLeft + scrollLeft, { startLeft, scale, scaleWidth }));
       }}
       onDrag={({ left }, scroll = 0) => {
         const scrollLeft = scrollSync.current.state.scrollLeft;
