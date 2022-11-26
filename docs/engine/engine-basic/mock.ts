@@ -1,6 +1,10 @@
-import { TimelineEffect, TimelineRow, TimelineAction } from '@xzdarcy/react-timeline-editor';
-import lottieControl from './lottieControl';
+import { TimelineAction, TimelineEffect, TimelineRow } from '@xzdarcy/react-timeline-editor';
 import audioControl from './audioControl';
+import lottieControl from './lottieControl';
+
+export const scaleWidth = 160;
+export const scale = 5;
+export const startLeft = 20;
 
 export interface CustomTimelineAction extends TimelineAction {
   data: {

@@ -1,15 +1,17 @@
 import { CaretRightOutlined, PauseOutlined } from '@ant-design/icons';
 import { TimelineState } from '@xzdarcy/react-timeline-editor';
 import { Select } from 'antd';
-import React, { FC, useEffect, useLayoutEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import lottieControl from './lottieControl';
+import { scale, scaleWidth, startLeft } from './mock';
 
 const { Option } = Select;
 export const Rates = [0.2, 0.5, 1.0, 1.5, 2.0];
 
 const TimelinePlayer: FC<{
   timelineState: React.MutableRefObject<TimelineState>;
-}> = ({ timelineState }) => {
+  autoScrollWhenPlay: React.MutableRefObject<boolean>;
+}> = ({ timelineState, autoScrollWhenPlay }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [time, setTime] = useState(0);
 
@@ -19,7 +21,15 @@ const TimelinePlayer: FC<{
     engine.listener.on('play', () => setIsPlaying(true));
     engine.listener.on('paused', () => setIsPlaying(false));
     engine.listener.on('afterSetTime', ({ time }) => setTime(time));
-    engine.listener.on('setTimeByTick', ({ time }) => setTime(time));
+    engine.listener.on('setTimeByTick', ({ time }) => {
+      setTime(time);
+
+      if (autoScrollWhenPlay.current) {
+        const autoScrollFrom = 500;
+        const left = time * (scaleWidth / scale) + startLeft - autoScrollFrom;
+        timelineState.current.setScrollLeft(left)
+      }
+    });
 
     return () => {
       if (!engine) return;

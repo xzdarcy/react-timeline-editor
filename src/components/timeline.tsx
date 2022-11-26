@@ -64,7 +64,7 @@ export const Timeline = React.forwardRef<TimelineState, TimelineEditor>((props, 
   // deprecated
   useEffect(() => {
     scrollSync.current && scrollSync.current.setState({ scrollTop: scrollTop });
-  }, [scrollTop])
+  }, [scrollTop]);
 
   /** 处理主动数据变化 */
   const handleEditorDataChange = (editorData: TimelineRow[]) => {
@@ -129,12 +129,12 @@ export const Timeline = React.forwardRef<TimelineState, TimelineEditor>((props, 
     reRender: engineRef.current.reRender.bind(engineRef.current),
     play: (param: Parameters<TimelineState['play']>[0]) => engineRef.current.play({ ...param }),
     pause: engineRef.current.pause.bind(engineRef.current),
-    setScrollLeft: (val) =>{
-      scrollSync.current && scrollSync.current.setState({ scrollLeft: val });
+    setScrollLeft: (val) => {
+      scrollSync.current && scrollSync.current.setState({ scrollLeft: Math.max(val, 0) });
     },
-    setScrollTop: (val) =>{
-      scrollSync.current && scrollSync.current.setState({ scrollTop: val });
-    }
+    setScrollTop: (val) => {
+      scrollSync.current && scrollSync.current.setState({ scrollTop: Math.max(val, 0) });
+    },
   }));
 
   return (
