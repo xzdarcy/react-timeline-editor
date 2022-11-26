@@ -26,7 +26,7 @@ group:
 > 
 > 你可以通过监听器，很轻松的获取运行数据变化，从而定制自己的运行器样式
 
-<code src="./example1/index.tsx"></code>
+<code src="./engine-basic/index.tsx"></code>
 
 ### 独立使用
 
@@ -34,4 +34,4 @@ group:
 > 
 > 这对于当你想要<b style="color: #a87654">编辑时</b>和<b style="color: #a87654">运行时</b>共用一套数据和运行能力时非常有用
 
-<code src="./example2/index.tsx"></code>
+<code src="./engine-standalone/index.tsx"></code>
