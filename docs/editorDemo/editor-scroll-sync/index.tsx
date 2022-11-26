@@ -1,22 +1,25 @@
-import { Timeline } from '@xzdarcy/react-timeline-editor';
+import { Timeline, TimelineState } from '@xzdarcy/react-timeline-editor';
 import { cloneDeep } from 'lodash';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import './index.less';
 import { mockData, mockEffect } from './mock';
-import { ScrollComp } from './scrollComp';
-import { useScrollTop } from './useScrollTop';
 
 const defaultEditorData = cloneDeep(mockData);
 
 const TimelineEditor = () => {
   const [data, setData] = useState(defaultEditorData);
-  const { scrollTop, onScroll } = useScrollTop();
+  const domRef = useRef<HTMLDivElement>();
+  const timelineState = useRef<TimelineState>();
   return (
     <div className="timeline-editor-example7">
-      <ScrollComp
-        scrollTop={scrollTop}
-        onScroll={onScroll}
-        className="timeline-list"
+      <div
+        ref={domRef}
+        style={{ overflow: 'overlay' }}
+        onScroll={(e) => {
+          const target = e.target as HTMLDivElement;
+          timelineState.current.setScrollTop(target.scrollTop);
+        }}
+        className={'timeline-list'}
       >
         {data.map((item) => {
           return (
@@ -25,13 +28,15 @@ const TimelineEditor = () => {
             </div>
           );
         })}
-      </ScrollComp>
+      </div>
       <Timeline
+        ref={timelineState}
         onChange={setData}
         editorData={data}
         effects={mockEffect}
-        scrollTop={scrollTop}
-        onScroll={onScroll}
+        onScroll={({ scrollTop }) => {
+          domRef.current.scrollTop = scrollTop;
+        }}
       />
     </div>
   );

@@ -1,6 +1,6 @@
 import { Timeline, TimelineAction } from '@xzdarcy/react-timeline-editor';
 import { cloneDeep } from 'lodash';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import './index.less';
 import { mockData, mockEffect } from './mock';
 
