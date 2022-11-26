@@ -236,16 +236,4 @@ export default class ConsoleLogger {
       console.groupCollapsed(...label);
     }
   }
-
-  /**
-   * return a html string
-   */
-  toString() {
-    return `<ConsoleLogger prefix="${this.prefix}" level="${this.level}"/>`;
-  }
-}
-
-if (process.env.NODE_ENV === 'development') {
-  // for debug use only
-  window['__ConsoleLogger'] = ConsoleLogger;
 }
