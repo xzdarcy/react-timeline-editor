@@ -61,6 +61,11 @@ export const Timeline = React.forwardRef<TimelineState, TimelineEditor>((props, 
     autoReRender && engineRef.current.reRender();
   }, [editorData]);
 
+  // deprecated
+  useEffect(() => {
+    scrollSync.current && scrollSync.current.setState({ scrollTop: scrollTop });
+  }, [scrollTop])
+
   /** 处理主动数据变化 */
   const handleEditorDataChange = (editorData: TimelineRow[]) => {
     const result = onChange(editorData);
@@ -124,12 +129,18 @@ export const Timeline = React.forwardRef<TimelineState, TimelineEditor>((props, 
     reRender: engineRef.current.reRender.bind(engineRef.current),
     play: (param: Parameters<TimelineState['play']>[0]) => engineRef.current.play({ ...param }),
     pause: engineRef.current.pause.bind(engineRef.current),
+    setScrollLeft: (val) =>{
+      scrollSync.current && scrollSync.current.setState({ scrollLeft: val });
+    },
+    setScrollTop: (val) =>{
+      scrollSync.current && scrollSync.current.setState({ scrollTop: val });
+    }
   }));
 
   return (
     <div ref={domRef} style={style} className={`${PREFIX} ${disableDrag ? PREFIX + '-disable' : ''}`}>
       <ScrollSync ref={scrollSync}>
-        {({ scrollLeft, onScroll }) => (
+        {({ scrollLeft, scrollTop, onScroll }) => (
           <>
             <TimeArea
               {...checkedProps}

@@ -216,6 +216,10 @@ export interface TimelineState {
   }) => boolean;
   /** 暂停 */
   pause: () => void;
+  /** 设置scroll left */
+  setScrollLeft: (val: number) => void;
+  /** 设置scroll top */
+  setScrollTop: (val: number) => void;
 }
 
 /**
@@ -225,7 +229,8 @@ export interface TimelineState {
  */
 export interface TimelineEditor extends EditData {
   /**
-   * @description 编辑区域距离顶部滚动距离 (用于控制与编辑行滚动同步)
+   * @description 编辑区域距离顶部滚动距离 (请使用ref.setScrollTop代替)
+   * @deprecated
    */
   scrollTop?: number;
   /**
