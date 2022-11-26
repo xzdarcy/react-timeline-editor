@@ -456,6 +456,20 @@ toc: 'menu'
         <code>() => void</code>
       </td>
     </tr>
+     <tr>
+      <td>setScrollLeft</td>
+      <td>设置scrollLeft</td>
+      <td>
+        <code>(val: number) => void</code>
+      </td>
+    </tr>
+     <tr>
+      <td>setScrollTop</td>
+      <td>设置scrollTop</td>
+      <td>
+        <code>(val: number) => void</code>
+      </td>
+    </tr>
 </table>
 
 
