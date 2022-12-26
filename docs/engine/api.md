@@ -1,7 +1,5 @@
 ---
 title: API
-group: 
-  title: 运行器
 ---
 
 ## 运行器 API
@@ -16,11 +14,11 @@ group:
 
 ### effects
 
-*setter*  <code>Record<string,<a href="/data#timelineeffect">TimelineEffect</a>></code> 运行效果
+*setter*  <code>Record<string,<a href="/api#timelineeffect">TimelineEffect</a>></code> 运行效果
 
 ### data
 
-*setter*  <code><a href="/data#timelinerow">TimelineRow</a>[]</code> 运行数据
+*setter*  <code><a href="/api#timelinerow">TimelineRow</a>[]</code> 运行数据
 
 ### setPlayRate
 

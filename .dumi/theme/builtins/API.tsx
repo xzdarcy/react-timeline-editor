@@ -4,10 +4,10 @@ import { context, useApiData, AnchorLink } from 'dumi/theme';
 import '../style/api.less';
 
 const DataLink = {
-  TimelineState: '/data#timelinestate',
-  TimelineRow: '/data#timelinerow',
-  TimelineAction: '/data#timelineaction',
-  TimelineEffect: '/data#timelineeffect',
+  TimelineState: '/api#timelinestate',
+  TimelineRow: '/api#timelinerow',
+  TimelineAction: '/api#timelineaction',
+  TimelineEffect: '/api#timelineeffect',
 };
 
 const keys = Object.keys(DataLink);

@@ -1,11 +1,61 @@
 import { defineConfig } from 'dumi';
 
 export default defineConfig({
-  title: 'react timeline editor',
-  favicon: 'https://user-images.githubusercontent.com/9554297/83762004-a0761b00-a6a9-11ea-83b4-9c8ff721d4b8.png',
+  title: 'React Timeline Editor',
+  favicon: '/assets/icon.png',
   logo: '/assets/icon.png',
   outputPath: 'docs-dist',
-  locales: [['zh-CN', '中文']],
-  styles: [`.__dumi-default-menu-header h1 {font-size: 24px}`]
+  mode: 'site',
+  navs: {
+    'en-US': [
+      {
+        title: 'Guide',
+        path: '/en-US/editor',
+      },
+      {
+        title: 'API',
+        path: '/en-US/api',
+      },
+      {
+        title: 'Engine',
+        path: '/en-US/engine',
+      },
+      {
+        title: 'TODO',
+        path: '/en-US/todo',
+      },
+      {
+        title: 'GitHub',
+        path: 'https://github.com/xzdarcy/react-timeline-editor',
+      },
+    ],
+    'zh-CN': [
+      {
+        title: '指南',
+        path: '/editor',
+      },
+      {
+        title: 'API',
+        path: '/api',
+      },
+      {
+        title: '引擎',
+        path: '/engine',
+      },
+      {
+        title: 'TODO',
+        path: '/todo',
+      },
+      {
+        title: 'GitHub',
+        path: 'https://github.com/xzdarcy/react-timeline-editor',
+      },
+    ],
+  },
+  locales: [
+    ['zh-CN', '中文'],
+    ['en-US', 'English'],
+  ],
+  styles: [`.__dumi-default-menu-header h1 {font-size: 24px}`],
   // more config: https://d.umijs.org/config
 });

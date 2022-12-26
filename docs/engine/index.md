@@ -1,15 +1,13 @@
 ---
 title: 介绍
 toc: 'menu'
-group: 
-  title: 运行器
 ---
 
 ## 运行器
 
 我们提供了解藕于编辑器的运行器，用于运行编辑器生产的数据。
 
-你可以通过定义每个<code><a href="/data#timelineeffect">TimelineEffect</a></code>中的运行能力（音频播放、动画播放等等），来实现你自己的运行体系。
+你可以通过定义每个<code><a href="/api#timelineeffect">TimelineEffect</a></code>中的运行能力（音频播放、动画播放等等），来实现你自己的运行体系。
 
 + 🛠 提供设置时间、设置运行速率等能力
 + ⚙️ 可独立使用
@@ -20,7 +18,7 @@ group:
 你可以在以下两种场景中使用运行器：
 
 ### 编辑时运行
-> 编辑器内置了一个运行器，提供了<code><a href="/data#timelinestate">TimelineState</a></code>用于更便捷的操控运行器。
+> 编辑器内置了一个运行器，提供了<code><a href="/api#timelinestate">TimelineState</a></code>用于更便捷的操控运行器。
 > 
 > 我们不提供默认的运行器样式，你需要自定义样式
 > 

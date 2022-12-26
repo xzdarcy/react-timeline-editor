@@ -2,6 +2,8 @@
 title: 刻度自定义
 toc: 'menu'
 order: 1
+group: 
+  title: 编辑器示例
 ---
 
 ### 刻度自定义

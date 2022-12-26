@@ -1,7 +1,118 @@
 ---
-title: 数据定义
+title: API
 toc: 'menu'
 ---
+
+## Props
+<API hideTitle src="../src/components/timeline.tsx"></API>
+
+
+## TimelineState
+
+> timeline组件数据
+
+<table>
+  <thead>
+    <tr>
+      <th>属性名</th>
+      <th>描述</th>
+      <th>类型</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+    <tr>
+      <td>target</td>
+      <td>timeline所属的dom节点</td>
+      <td>
+        <code>HTMLElement</code>
+      </td>
+    </tr>
+     <tr>
+      <td>listener</td>
+      <td>运行监听器</td>
+      <td>
+        <code>Emitter</code>
+      </td>
+    </tr>
+     <tr>
+      <td>isPlaying</td>
+      <td>是否正在播放</td>
+      <td>
+        <code>boolean</code>
+      </td>
+    </tr>
+     <tr>
+      <td>isPaused</td>
+      <td>是否暂停中</td>
+      <td>
+        <code>boolean</code>
+      </td>
+    </tr>
+     <tr>
+      <td>setTime</td>
+      <td>设置当前播放时间</td>
+      <td>
+        <code>(time: number) => void</code>
+      </td>
+    </tr>
+     <tr>
+      <td>getTime</td>
+      <td>获取当前播放时间</td>
+      <td>
+        <code>() => number</code>
+      </td>
+    </tr>
+     <tr>
+      <td>setPlayRate</td>
+      <td>设置播放速率</td>
+      <td>
+        <code>(rate: number) => void</code>
+      </td>
+    </tr>
+     <tr>
+      <td>getPlayRate</td>
+      <td>设置播放速率</td>
+      <td>
+        <code>() => number</code>
+      </td>
+    </tr>
+     <tr>
+      <td>reRender</td>
+      <td>重新渲染当前时间</td>
+      <td>
+        <code>() => void</code>
+      </td>
+    </tr>
+     <tr>
+      <td>play</td>
+      <td>运行</td>
+      <td>
+        <code>(param: { toTime?: number; autoEnd?: boolean; }) => boolean</code>
+      </td>
+    </tr>
+     <tr>
+      <td>pause</td>
+      <td>暂停</td>
+      <td>
+        <code>() => void</code>
+      </td>
+    </tr>
+     <tr>
+      <td>setScrollLeft</td>
+      <td>设置scrollLeft</td>
+      <td>
+        <code>(val: number) => void</code>
+      </td>
+    </tr>
+     <tr>
+      <td>setScrollTop</td>
+      <td>设置scrollTop</td>
+      <td>
+        <code>(val: number) => void</code>
+      </td>
+    </tr>
+</table>
 
 ## TimelineRow
 
@@ -32,7 +143,7 @@ toc: 'menu'
       <td>actions</td>
       <td>行的动作列表</td>
       <td>
-        <code><a href="/data#timelineaction">TimelineAction</a>[]</code>
+        <code><a href="/api#timelineaction">TimelineAction</a>[]</code>
       </td>
       <td>
         <code>（必选）</code>
@@ -346,14 +457,14 @@ toc: 'menu'
       <td>action</td>
       <td>动作</td>
       <td>
-        <code><a href="/data#timelineaction">TimelineAction</a></code>
+        <code><a href="/api#timelineaction">TimelineAction</a></code>
       </td>
     </tr>
      <tr>
       <td>effect</td>
       <td>动作效果</td>
       <td>
-        <code><a href="/data#timelineeffect">TimelineEffect</a></code>
+        <code><a href="/api#timelineeffect">TimelineEffect</a></code>
       </td>
     </tr>
      <tr>
@@ -364,113 +475,3 @@ toc: 'menu'
       </td>
     </tr>
 </table>
-
-## TimelineState
-
-> timeline组件数据
-
-<table>
-  <thead>
-    <tr>
-      <th>属性名</th>
-      <th>描述</th>
-      <th>类型</th>
-    </tr>
-  </thead>
-  <tbody>
-  </tbody>
-    <tr>
-      <td>target</td>
-      <td>timeline所属的dom节点</td>
-      <td>
-        <code>HTMLElement</code>
-      </td>
-    </tr>
-     <tr>
-      <td>listener</td>
-      <td>运行监听器</td>
-      <td>
-        <code>Emitter</code>
-      </td>
-    </tr>
-     <tr>
-      <td>isPlaying</td>
-      <td>是否正在播放</td>
-      <td>
-        <code>boolean</code>
-      </td>
-    </tr>
-     <tr>
-      <td>isPaused</td>
-      <td>是否暂停中</td>
-      <td>
-        <code>boolean</code>
-      </td>
-    </tr>
-     <tr>
-      <td>setTime</td>
-      <td>设置当前播放时间</td>
-      <td>
-        <code>(time: number) => void</code>
-      </td>
-    </tr>
-     <tr>
-      <td>getTime</td>
-      <td>获取当前播放时间</td>
-      <td>
-        <code>() => number</code>
-      </td>
-    </tr>
-     <tr>
-      <td>setPlayRate</td>
-      <td>设置播放速率</td>
-      <td>
-        <code>(rate: number) => void</code>
-      </td>
-    </tr>
-     <tr>
-      <td>getPlayRate</td>
-      <td>设置播放速率</td>
-      <td>
-        <code>() => number</code>
-      </td>
-    </tr>
-     <tr>
-      <td>reRender</td>
-      <td>重新渲染当前时间</td>
-      <td>
-        <code>() => void</code>
-      </td>
-    </tr>
-     <tr>
-      <td>play</td>
-      <td>运行</td>
-      <td>
-        <code>(param: { toTime?: number; autoEnd?: boolean; }) => boolean</code>
-      </td>
-    </tr>
-     <tr>
-      <td>pause</td>
-      <td>暂停</td>
-      <td>
-        <code>() => void</code>
-      </td>
-    </tr>
-     <tr>
-      <td>setScrollLeft</td>
-      <td>设置scrollLeft</td>
-      <td>
-        <code>(val: number) => void</code>
-      </td>
-    </tr>
-     <tr>
-      <td>setScrollTop</td>
-      <td>设置scrollTop</td>
-      <td>
-        <code>(val: number) => void</code>
-      </td>
-    </tr>
-</table>
-
-
-

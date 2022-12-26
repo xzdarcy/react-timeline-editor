@@ -1,6 +1,8 @@
 ---
 title: 滚动同步
 order: 7
+group: 
+  title: 编辑器示例
 ---
 
 ### 滚动同步
