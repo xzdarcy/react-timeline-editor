@@ -1,5 +1,5 @@
-import { Howl } from 'howler';
 import { TimelineEngine } from '@xzdarcy/react-timeline-editor';
+import { Howl } from 'howler';
 
 class AudioControl {
   cacheMap: Record<string, Howl> = {};
@@ -22,8 +22,10 @@ class AudioControl {
     } else {
       item = new Howl({ src, loop: true, autoplay: true });
       this.cacheMap[id] = item;
-      item.rate(engine.getPlayRate());
-      item.seek((time - startTime) % item.duration());
+      item.on('load', () => {
+        item.rate(engine.getPlayRate());
+        item.seek((time - startTime) % item.duration());
+      });
     }
 
     const timeListener = (data: { time: number }) => {
