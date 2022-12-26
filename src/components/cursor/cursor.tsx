@@ -46,7 +46,7 @@ export const Cursor: FC<CursorProps> = ({
       // 非dragging时，根据穿参更新cursor刻度
       rowRnd.current.updateLeft(parserTimeToPixel(cursorTime, { startLeft, scaleWidth, scale }) - scrollLeft);
     }
-  }, [cursorTime, startLeft, scaleWidth, scale]);
+  }, [cursorTime, startLeft, scaleWidth, scale, scrollLeft]);
 
   useEffect(() => {
     if (areaRef.current) {
