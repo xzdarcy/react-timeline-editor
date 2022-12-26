@@ -79,8 +79,11 @@ export const Timeline = React.forwardRef<TimelineState, TimelineEditor>((props, 
   const handleSetCursor = (param: { left?: number; time?: number; updateTime?: boolean }) => {
     let { left, time, updateTime = true } = param;
     if (typeof left === 'undefined' && typeof time === 'undefined') return;
-    if (typeof left === 'undefined') left = parserTimeToPixel(time, { startLeft, scale, scaleWidth });
-    if (typeof time === 'undefined') time = parserPixelToTime(left, { startLeft, scale, scaleWidth });
+
+    if (typeof time === 'undefined') {
+      if (typeof left === 'undefined') left = parserTimeToPixel(time, { startLeft, scale, scaleWidth });
+      time = parserPixelToTime(left, { startLeft, scale, scaleWidth });
+    }
 
     let result = true;
     if (updateTime) {

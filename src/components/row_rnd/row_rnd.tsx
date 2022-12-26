@@ -48,8 +48,8 @@ export const RowDnd = React.forwardRef<RowRndApi, RowRndProps>(
 
     //#region [rgba(100,120,156,0.08)] 赋值相关api
     useImperativeHandle(ref, () => ({
-      updateLeft: handleUpdateLeft,
-      updateWidth: handleUpdateWidth,
+      updateLeft: (left) => handleUpdateLeft(left || 0, false),
+      updateWidth: (width) => handleUpdateWidth(width, false),
       getLeft: handleGetLeft,
       getWidth: handleGetWidth,
     }));
