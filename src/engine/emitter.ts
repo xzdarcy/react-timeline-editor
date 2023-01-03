@@ -55,6 +55,6 @@ export class Emitter<EventTypes> {
   }
 
   offAll() {
-    this.events = {};
+    this.events = Object.fromEntries(Object.keys(this.events).map((name) => [name, []]));
   }
 }
