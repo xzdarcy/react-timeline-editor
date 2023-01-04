@@ -86,7 +86,6 @@ export const TimeArea: FC<TimeAreaProps> = ({
                 overscanColumnCount={10}
                 cellRenderer={cellRenderer}
                 scrollLeft={scrollLeft}
-                onScroll={onScroll}
               ></Grid>
               <div
                 style={{ width, height }}

@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef, useState } from 'react';
+import React, { FC, useLayoutEffect, useRef, useState } from 'react';
 import { TimelineAction, TimelineRow } from '../../interface/action';
 import { CommonProp } from '../../interface/common_prop';
 import { DEFAULT_ADSORPTION_DISTANCE, DEFAULT_MOVE_GRID } from '../../interface/const';
@@ -74,7 +74,7 @@ export const EditAction: FC<EditActionProps> = ({
     return parserTimeToTransform({ start, end }, { startLeft, scale, scaleWidth });
   });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setTransform(parserTimeToTransform({ start, end }, { startLeft, scale, scaleWidth }));
   }, [end, start, startLeft, scaleWidth, scale]);
 

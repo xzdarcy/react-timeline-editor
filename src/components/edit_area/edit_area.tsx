@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useImperativeHandle, useRef, useState } from 'react';
+import React, { useEffect, useImperativeHandle, useLayoutEffect, useRef } from 'react';
 import { AutoSizer, Grid, GridCellRenderer, OnScrollParams } from 'react-virtualized';
 import { TimelineRow } from '../../interface/action';
 import { CommonProp } from '../../interface/common_prop';
@@ -25,7 +25,7 @@ export type EditAreaProps = CommonProp & {
 
 /** edit area ref数据 */
 export interface EditAreaState {
-  domRef: React.MutableRefObject<HTMLDivElement>
+  domRef: React.MutableRefObject<HTMLDivElement>;
 }
 
 export const EditArea = React.forwardRef<EditAreaState, EditAreaProps>((props, ref) => {
@@ -51,7 +51,6 @@ export const EditArea = React.forwardRef<EditAreaState, EditAreaProps>((props, r
     onActionResizing,
   } = props;
   const { dragLineData, initDragLine, updateDragLine, disposeDragLine, defaultGetAssistPosition, defaultGetMovePosition } = useDragLine();
-  const [top, setTop] = useState(scrollTop);
   const editAreaRef = useRef<HTMLDivElement>();
   const gridRef = useRef<Grid>();
   const heightRef = useRef(-1);
@@ -60,7 +59,7 @@ export const EditArea = React.forwardRef<EditAreaState, EditAreaProps>((props, r
   useImperativeHandle(ref, () => ({
     get domRef() {
       return editAreaRef;
-    }
+    },
   }));
 
   const handleInitDragLine: EditData['onActionMoveStart'] = (data) => {
@@ -145,9 +144,9 @@ export const EditArea = React.forwardRef<EditAreaState, EditAreaProps>((props, r
     );
   };
 
-  useEffect(() => {
-    setTop(scrollTop);
-  }, [scrollTop]);
+  useLayoutEffect(() => {
+    gridRef.current?.scrollToPosition({ scrollTop, scrollLeft });
+  }, [scrollTop, scrollLeft]);
 
   useEffect(() => {
     gridRef.current.recomputeGridSize();
@@ -189,10 +188,7 @@ export const EditArea = React.forwardRef<EditAreaState, EditAreaProps>((props, r
               rowHeight={({ index }) => heights[index] || rowHeight}
               overscanRowCount={10}
               overscanColumnCount={0}
-              scrollLeft={scrollLeft}
-              scrollTop={top}
               onScroll={(param) => {
-                setTop(param.scrollTop);
                 onScroll(param);
               }}
             />
