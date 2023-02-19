@@ -188,6 +188,10 @@ export interface EditData {
    * @description cursor拖拽事件
    */
   onCursorDrag?: (time: number) => void;
+  /**
+   * @description 点击时间区域事件, 返回false时阻止设置时间
+   */
+  onClickTimeArea?: (time: number, e: React.MouseEvent<HTMLDivElement, MouseEvent>) => boolean | undefined;
 }
 
 export interface TimelineState {

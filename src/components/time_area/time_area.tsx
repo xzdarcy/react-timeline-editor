@@ -1,9 +1,6 @@
+import { parserPixelToTime } from '@/utils/deal_data';
 import React, { FC, useEffect, useRef } from 'react';
-import {
-  AutoSizer, Grid,
-  GridCellRenderer,
-  OnScrollParams
-} from 'react-virtualized';
+import { AutoSizer, Grid, GridCellRenderer, OnScrollParams } from 'react-virtualized';
 import { CommonProp } from '../../interface/common_prop';
 import { prefix } from '../../utils/deal_class_prefix';
 import './time_area.less';
@@ -19,18 +16,7 @@ export type TimeAreaProps = CommonProp & {
 };
 
 /** 动画时间轴组件 */
-export const TimeArea: FC<TimeAreaProps> = ({
-  setCursor,
-  hideCursor,
-  scale,
-  scaleWidth,
-  scaleCount,
-  scaleSplitCount,
-  startLeft,
-  scrollLeft,
-  onScroll,
-  getScaleRender,
-}) => {
+export const TimeArea: FC<TimeAreaProps> = ({ setCursor, hideCursor, scale, scaleWidth, scaleCount, scaleSplitCount, startLeft, scrollLeft, onClickTimeArea, getScaleRender }) => {
   const gridRef = useRef<Grid>();
   /** 是否显示细分刻度 */
   const showUnit = scaleSplitCount > 0;
@@ -43,11 +29,7 @@ export const TimeArea: FC<TimeAreaProps> = ({
     const item = (showUnit ? columnIndex / scaleSplitCount : columnIndex) * scale;
     return (
       <div key={key} style={style} className={prefix(...classNames)}>
-        {isShowScale && (
-          <div className={prefix('time-unit-scale')}>
-            {getScaleRender ? getScaleRender(item) : item}
-          </div>
-        )}
+        {isShowScale && <div className={prefix('time-unit-scale')}>{getScaleRender ? getScaleRender(item) : item}</div>}
       </div>
     );
   };
@@ -74,9 +56,7 @@ export const TimeArea: FC<TimeAreaProps> = ({
             <>
               <Grid
                 ref={gridRef}
-                columnCount={
-                  showUnit ? scaleCount * scaleSplitCount : scaleCount
-                }
+                columnCount={showUnit ? scaleCount * scaleSplitCount : scaleCount}
                 columnWidth={getColumnWidth}
                 rowCount={1}
                 rowHeight={height}
@@ -91,11 +71,13 @@ export const TimeArea: FC<TimeAreaProps> = ({
                 style={{ width, height }}
                 onClick={(e) => {
                   if (hideCursor) return;
-                  const rect = (
-                    e.currentTarget as HTMLElement
-                  ).getBoundingClientRect();
+                  const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
                   const position = e.clientX - rect.x;
-                  setCursor({ left: Math.max(position + scrollLeft, startLeft)});
+
+                  const time = parserPixelToTime(Math.max(position + scrollLeft, startLeft), { startLeft, scale, scaleWidth });
+                  const result = onClickTimeArea && onClickTimeArea(time, e);
+                  if(result === false) return; // 返回false时阻止设置时间
+                  setCursor({ time });
                 }}
                 className={prefix('time-area-interact')}
               ></div>
