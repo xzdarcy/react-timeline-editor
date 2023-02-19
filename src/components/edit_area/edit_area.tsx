@@ -182,7 +182,7 @@ export const EditArea = React.forwardRef<EditAreaState, EditAreaProps>((props, r
               rowCount={heights.length}
               ref={gridRef}
               cellRenderer={cellRenderer}
-              columnWidth={Math.max(scaleCount * scaleWidth, width)}
+              columnWidth={Math.max(scaleCount * scaleWidth + startLeft, width)}
               width={width}
               height={height}
               rowHeight={({ index }) => heights[index] || rowHeight}

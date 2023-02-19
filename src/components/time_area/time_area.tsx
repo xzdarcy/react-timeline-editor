@@ -56,7 +56,7 @@ export const TimeArea: FC<TimeAreaProps> = ({ setCursor, hideCursor, scale, scal
             <>
               <Grid
                 ref={gridRef}
-                columnCount={showUnit ? scaleCount * scaleSplitCount : scaleCount}
+                columnCount={showUnit ? scaleCount * scaleSplitCount + 1 : scaleCount}
                 columnWidth={getColumnWidth}
                 rowCount={1}
                 rowHeight={height}
