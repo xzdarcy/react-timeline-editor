@@ -51,6 +51,7 @@ export const Cursor: FC<CursorProps> = ({
   useEffect(() => {
     if (areaRef.current) {
       const resizeObserver = new ResizeObserver(() => {
+        if(!areaRef.current) return;
         setWidth(areaRef.current.getBoundingClientRect().width);
       });
       resizeObserver.observe(areaRef.current!);
