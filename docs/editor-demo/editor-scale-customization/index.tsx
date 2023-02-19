@@ -62,6 +62,7 @@ const TimelineEditor = () => {
       </Input.Group>
       <Timeline
         onChange={setData}
+        autoScroll={true}
         editorData={data}
         effects={mockEffect}
         scale={scale}
