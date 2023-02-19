@@ -34,6 +34,7 @@ export const EditAction: FC<EditActionProps> = ({
   disableDrag,
 
   scaleCount,
+  maxScaleCount,
   setScaleCount,
   onActionMoveStart,
   onActionMoving,
@@ -63,11 +64,14 @@ export const EditAction: FC<EditActionProps> = ({
     scale,
     scaleWidth,
   });
-  const rightLimit = parserTimeToPixel(maxEnd || Number.MAX_VALUE, {
-    startLeft,
-    scale,
-    scaleWidth,
-  });
+  const rightLimit = Math.min(
+    maxScaleCount * scaleWidth + startLeft, // 根据maxScaleCount限制移动范围
+    parserTimeToPixel(maxEnd || Number.MAX_VALUE, {
+      startLeft,
+      scale,
+      scaleWidth,
+    }),
+  );
 
   // 初始化动作坐标数据
   const [transform, setTransform] = useState(() => {

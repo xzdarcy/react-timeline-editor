@@ -26,7 +26,7 @@ export const Cursor: FC<CursorProps> = ({
   cursorTime,
   setCursor,
   startLeft,
-  scaleCount,
+  timelineWidth,
   scaleWidth,
   scale,
   scrollLeft,
@@ -39,7 +39,6 @@ export const Cursor: FC<CursorProps> = ({
 }) => {
   const rowRnd = useRef<RowRndApi>();
   const draggingLeft = useRef<undefined | number>();
-  const [width, setWidth] = useState(Number.MAX_SAFE_INTEGER);
 
   useEffect(() => {
     if (typeof draggingLeft.current === 'undefined') {
@@ -48,19 +47,6 @@ export const Cursor: FC<CursorProps> = ({
     }
   }, [cursorTime, startLeft, scaleWidth, scale, scrollLeft]);
 
-  useEffect(() => {
-    if (areaRef.current) {
-      const resizeObserver = new ResizeObserver(() => {
-        if(!areaRef.current) return;
-        setWidth(areaRef.current.getBoundingClientRect().width);
-      });
-      resizeObserver.observe(areaRef.current!);
-      return () => {
-        resizeObserver && resizeObserver.disconnect();
-      };
-    }
-  }, []);
-
   return (
     <RowDnd
       start={startLeft}
@@ -68,18 +54,9 @@ export const Cursor: FC<CursorProps> = ({
       parentRef={areaRef}
       bounds={{
         left: 0,
-        right: width,
+        right: timelineWidth,
       }}
-      deltaScrollLeft={
-        deltaScrollLeft
-          ? (delta) => {
-              // 当超过最大距离时，禁止滚动
-              const data = scrollSync.current.state.scrollLeft + delta;
-              if (data > scaleCount * (scaleWidth - 1) + startLeft - width) return;
-              deltaScrollLeft(delta);
-            }
-          : undefined
-      }
+      deltaScrollLeft={deltaScrollLeft}
       enableDragging={!disableDrag}
       enableResizing={false}
       onDragStart={() => {

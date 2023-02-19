@@ -27,6 +27,11 @@ export interface EditData {
    */
   minScaleCount?: number;
   /**
+   * @description 最大刻度个数（>=minScaleCount）
+   * @default Infinity
+   */
+  maxScaleCount?: number;
+  /**
    * @description 单个刻度细分单元数（>0整数）
    * @default 10
    */

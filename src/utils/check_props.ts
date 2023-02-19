@@ -13,6 +13,7 @@ export function checkProps(props: TimelineEditor): TimelineEditor {
     scaleWidth = DEFAULT_SCALE_WIDTH,
     startLeft = DEFAULT_START_LEFT,
     minScaleCount = MIN_SCALE_COUNT,
+    maxScaleCount = Infinity,
     rowHeight = DEFAULT_ROW_HEIGHT,
   } = props;
 
@@ -42,10 +43,16 @@ export function checkProps(props: TimelineEditor): TimelineEditor {
   }
 
   if(minScaleCount < 1) {
-    logger.warn('Warning: rowHeight must be greater than 0!')
+    logger.warn('Warning: minScaleCount must be greater than 1!')
     minScaleCount = MIN_SCALE_COUNT
   }
   minScaleCount = parseInt(minScaleCount + '');
+
+  if(maxScaleCount < minScaleCount) {
+    logger.warn('Warning: maxScaleCount cannot be less than minScaleCount!')
+    maxScaleCount = minScaleCount
+  }
+  maxScaleCount = maxScaleCount === Infinity ? Infinity : parseInt(maxScaleCount + '');
 
   if(rowHeight <= 0) {
     logger.warn('Warning: rowHeight must be greater than 0!')
@@ -64,6 +71,7 @@ export function checkProps(props: TimelineEditor): TimelineEditor {
     scaleWidth,
     startLeft,
     minScaleCount,
+    maxScaleCount,
     rowHeight,
   }
 }
