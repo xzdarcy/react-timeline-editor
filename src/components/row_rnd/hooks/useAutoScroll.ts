@@ -49,7 +49,7 @@ export function useAutoScroll(target: React.MutableRefObject<HTMLDivElement>) {
       const over = Math.abs(e.clientX >= rightBoundRef.current ? e.clientX - rightBoundRef.current : e.clientX - leftBoundRef.current);
       speed.current = Math.min(Number((over / CRITICAL_SIZE).toFixed(0)) * DEFAULT_SPEED, MAX_SPEED);
 
-      const direction = dir === 'right' ? 1 : -1;
+      const direction = e.clientX >= rightBoundRef.current ? 1 : -1;
       const delta = direction * speed.current;
       const loop = () => {
         deltaScroll && deltaScroll(delta);
