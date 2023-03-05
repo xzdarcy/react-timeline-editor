@@ -32,6 +32,7 @@ export const Cursor: FC<CursorProps> = ({
   scrollLeft,
   scrollSync,
   areaRef,
+  maxScaleCount,
   deltaScrollLeft,
   onCursorDragStart,
   onCursorDrag,
@@ -54,7 +55,7 @@ export const Cursor: FC<CursorProps> = ({
       parentRef={areaRef}
       bounds={{
         left: 0,
-        right: timelineWidth,
+        right: Math.min(timelineWidth, maxScaleCount * scaleWidth + startLeft - scrollLeft),
       }}
       deltaScrollLeft={deltaScrollLeft}
       enableDragging={!disableDrag}

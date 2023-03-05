@@ -16,7 +16,7 @@ export type TimeAreaProps = CommonProp & {
 };
 
 /** 动画时间轴组件 */
-export const TimeArea: FC<TimeAreaProps> = ({ setCursor, hideCursor, scale, scaleWidth, scaleCount, scaleSplitCount, startLeft, scrollLeft, onClickTimeArea, getScaleRender }) => {
+export const TimeArea: FC<TimeAreaProps> = ({ setCursor, maxScaleCount, hideCursor, scale, scaleWidth, scaleCount, scaleSplitCount, startLeft, scrollLeft, onClickTimeArea, getScaleRender }) => {
   const gridRef = useRef<Grid>();
   /** 是否显示细分刻度 */
   const showUnit = scaleSplitCount > 0;
@@ -73,10 +73,12 @@ export const TimeArea: FC<TimeAreaProps> = ({ setCursor, hideCursor, scale, scal
                   if (hideCursor) return;
                   const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
                   const position = e.clientX - rect.x;
+                  const left = Math.max(position + scrollLeft, startLeft);
+                  if (left > maxScaleCount * scaleWidth + startLeft - scrollLeft) return;
 
-                  const time = parserPixelToTime(Math.max(position + scrollLeft, startLeft), { startLeft, scale, scaleWidth });
+                  const time = parserPixelToTime(left, { startLeft, scale, scaleWidth });
                   const result = onClickTimeArea && onClickTimeArea(time, e);
-                  if(result === false) return; // 返回false时阻止设置时间
+                  if (result === false) return; // 返回false时阻止设置时间
                   setCursor({ time });
                 }}
                 className={prefix('time-area-interact')}
