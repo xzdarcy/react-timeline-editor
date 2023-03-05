@@ -7,6 +7,32 @@ const PLAYING = 'playing';
 const PAUSED = 'paused';
 type PlayState = 'playing' | 'paused';
 
+export interface ITimelineEngine extends Emitter<EventTypes> {
+  readonly isPlaying: boolean;
+  readonly isPaused: boolean;
+  effects: Record<string, TimelineEffect>;
+  data: TimelineRow[];
+  /** 设置播放速率 */
+  setPlayRate(rate: number): boolean;
+  /** 获取播放速率 */
+  getPlayRate(): number;
+  /** 重新渲染当前时间 */
+  reRender(): void;
+  /** 设置播放时间 */
+  setTime(time: number, isTick?: boolean): boolean;
+  /** 获取播放时间 */
+  getTime(): number;
+  /** 播放 */
+  play(param: {
+    /** 默认从头运行到尾, 优先级大于autoEnd */
+    toTime?: number;
+    /** 是否播放完后自动结束 */
+    autoEnd?: boolean;
+  }): boolean;
+  /** 暂停 */
+  pause(): void;
+}
+
 /**
  * 时间轴播放器
  * 可脱离编辑器单独运行
@@ -14,7 +40,7 @@ type PlayState = 'playing' | 'paused';
  * @class TimelineEngine
  * @extends {Emitter<EventTypes>}
  */
-export class TimelineEngine extends Emitter<EventTypes> {
+export class TimelineEngine extends Emitter<EventTypes> implements ITimelineEngine {
   constructor() {
     super(new Events());
   }

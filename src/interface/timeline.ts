@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import { OnScrollParams } from 'react-virtualized';
+import { ITimelineEngine } from '..';
 import { Emitter } from '../engine/emitter';
 import { EventTypes } from '../engine/events';
 import { TimelineAction, TimelineRow } from './action';
@@ -71,6 +72,10 @@ export interface EditData {
    * @default false
    */
   disableDrag?: boolean;
+  /**
+   * @description timeline运行器，不传则使用内置运行器
+   */
+  engine?: ITimelineEngine;
   /**
    * @description 自定义action区域渲染
    */

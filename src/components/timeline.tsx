@@ -1,6 +1,6 @@
 import React, { useEffect, useImperativeHandle, useLayoutEffect, useRef, useState } from 'react';
 import { ScrollSync } from 'react-virtualized';
-import { TimelineEngine } from '../engine/engine';
+import { ITimelineEngine, TimelineEngine } from '../engine/engine';
 import { MIN_SCALE_COUNT, PREFIX, START_CURSOR_TIME } from '../interface/const';
 import { TimelineEditor, TimelineRow, TimelineState } from '../interface/timeline';
 import { checkProps } from '../utils/check_props';
@@ -26,11 +26,12 @@ export const Timeline = React.forwardRef<TimelineState, TimelineEditor>((props, 
     minScaleCount,
     maxScaleCount,
     onChange,
+    engine,
     autoReRender = true,
     onScroll: onScrollVertical,
   } = checkedProps;
 
-  const engineRef = useRef<TimelineEngine>(new TimelineEngine());
+  const engineRef = useRef<ITimelineEngine>(engine || new TimelineEngine());
   const domRef = useRef<HTMLDivElement>();
   const areaRef = useRef<HTMLDivElement>();
   const scrollSync = useRef<ScrollSync>();

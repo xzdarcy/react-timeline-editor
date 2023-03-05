@@ -8,10 +8,11 @@ const DataLink = {
   TimelineRow: '/data#timelinerow',
   TimelineAction: '/data#timelineaction',
   TimelineEffect: '/data#timelineeffect',
+  ITimelineEngine: '/engine/api',
 };
 
 const keys = Object.keys(DataLink);
-const reg = new RegExp(/TimelineState|TimelineAction|TimelineRow|TimelineEffect/);
+const reg = new RegExp(/TimelineState|TimelineAction|TimelineRow|TimelineEffect|ITimelineEngine/);
 
 const LOCALE_TEXTS = {
   'zh-CN': {
