@@ -5,15 +5,17 @@
 **[React Timeline Editor](https://zdarcy.com/)** is a react component used to quickly build a timeline animation editor.
 
 ![example](https://github.com/xzdarcy/react-timeline-editor/blob/f79d85eee8a723e5210c04232daf2c51888418c0/public/assets/timeline.gif)
+
+## Fork differences
+- Add a new prop to allow dragging while the timeline is playing
+- Removed unnecessary timelineRef.current.data = newData. It was causing the timeline to stop when the data was changed
+
+
 ## Getting Started
 
 ```bash
 npm install @xzdarcy/react-timeline-editor
 ```
-
-## Fork difference
-- Add a new prop to allow dragging while the timeline is playing
-- Removed unnecessary timelineRef.current.data = newData. It was causing the timeline to stop when the data was changed
 
 ```ts
 import { Timeline, TimelineEffect, TimelineRow } from '@xzdarcy/react-timeline-editor';
