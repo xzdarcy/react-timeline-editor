@@ -11,6 +11,10 @@
 npm install @xzdarcy/react-timeline-editor
 ```
 
+## Fork difference
+- Add a new prop to allow dragging while the timeline is playing
+- Removed unnecessary timelineRef.current.data = newData. It was causing the timeline to stop when the data was changed
+
 ```ts
 import { Timeline, TimelineEffect, TimelineRow } from '@xzdarcy/react-timeline-editor';
 import React from 'react';
