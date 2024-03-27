@@ -1,6 +1,6 @@
 {
   "name": "@rakesh.rk1/react-timeline-editor",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "author": "Rakesh",
   "license": "MIT",
   "keywords": [
@@ -41,7 +41,7 @@
     "@types/react-virtualized": "^9.21.14",
     "framework-utils": "^1.1.0",
     "interactjs": "^1.10.11",
-    "react-virtualized": "^9.22.3.patch"
+    "react-virtualized": "^9.22.4"
   },
   "devDependencies": {
     "@types/howler": "^2.2.4",
@@ -62,5 +62,8 @@
     "react-dom": "^18.2.0",
     "yorkie": "^2.0.0"
   },
-  "description": "React Video Timeline"
+  "description": "React Video Timeline",
+  "directories": {
+    "doc": "docs"
+  }
 }
