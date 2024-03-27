@@ -1,7 +1,7 @@
 {
-  "name": "@xzdarcy/react-timeline-editor",
-  "version": "0.1.9",
-  "author": "xzdarcy",
+  "name": "@rakesh.rk1/react-timeline-editor",
+  "version": "0.1.0",
+  "author": "Rakesh",
   "license": "MIT",
   "keywords": [
     "timeline",
@@ -11,12 +11,12 @@
     "typescript"
   ],
   "bugs": {
-    "url": "https://github.com/xzdarcy/react-timeline-editor/issues"
+    "url": "https://github.com/rk9155/react-timeline-editor/issues"
   },
-  "homepage": "https://github.com/xzdarcy/react-timeline-editor#readme",
+  "homepage": "https://github.com/rk9155/react-timeline-editor#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xzdarcy/react-timeline-editor.git"
+    "url": "git+ssh://git@github.com/rk9155/react-timeline-editor.git"
   },
   "scripts": {
     "start": "dumi dev",
@@ -61,5 +61,9 @@
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "yorkie": "^2.0.0"
+  },
+  "description": "React Video Timeline",
+  "directories": {
+    "doc": "docs"
   }
 }
