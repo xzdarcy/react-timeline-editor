@@ -20,6 +20,7 @@ export const Timeline = React.forwardRef<TimelineState, TimelineEditor>((props, 
     autoScroll,
     hideCursor,
     disableDrag,
+    disableDragWhilePlaying,
     scale,
     scaleWidth,
     startLeft,
@@ -80,7 +81,6 @@ export const Timeline = React.forwardRef<TimelineState, TimelineEditor>((props, 
   const handleEditorDataChange = (editorData: TimelineRow[]) => {
     const result = onChange(editorData);
     if (result !== false) {
-      engineRef.current.data = editorData;
       autoReRender && engineRef.current.reRender();
     }
   };
@@ -166,7 +166,6 @@ export const Timeline = React.forwardRef<TimelineState, TimelineEditor>((props, 
       };
     }
   }, []);
-
   return (
     <div ref={domRef} style={style} className={`${PREFIX} ${disableDrag ? PREFIX + '-disable' : ''}`}>
       <ScrollSync ref={scrollSync}>
@@ -175,7 +174,7 @@ export const Timeline = React.forwardRef<TimelineState, TimelineEditor>((props, 
             <TimeArea
               {...checkedProps}
               timelineWidth={width}
-              disableDrag={disableDrag || isPlaying}
+              disableDrag={disableDrag || (disableDragWhilePlaying && isPlaying)}
               setCursor={handleSetCursor}
               cursorTime={cursorTime}
               editorData={editorData}
@@ -188,7 +187,7 @@ export const Timeline = React.forwardRef<TimelineState, TimelineEditor>((props, 
               {...checkedProps}
               timelineWidth={width}
               ref={(ref) => ((areaRef.current as any) = ref?.domRef.current)}
-              disableDrag={disableDrag || isPlaying}
+              disableDrag={disableDrag || (disableDragWhilePlaying && isPlaying)}
               editorData={editorData}
               cursorTime={cursorTime}
               scaleCount={scaleCount}
@@ -206,7 +205,7 @@ export const Timeline = React.forwardRef<TimelineState, TimelineEditor>((props, 
               <Cursor
                 {...checkedProps}
                 timelineWidth={width}
-                disableDrag={isPlaying}
+                disableDrag={disableDragWhilePlaying && isPlaying}
                 scrollLeft={scrollLeft}
                 scaleCount={scaleCount}
                 setScaleCount={handleSetScaleCount}

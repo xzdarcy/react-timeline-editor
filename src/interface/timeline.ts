@@ -75,6 +75,11 @@ export interface EditData {
   /**
    * @description timeline运行器，不传则使用内置运行器
    */
+
+  disableDragWhilePlaying?: boolean;
+  /**
+   * @description Disable drag while playing
+   */
   engine?: ITimelineEngine;
   /**
    * @description 自定义action区域渲染
