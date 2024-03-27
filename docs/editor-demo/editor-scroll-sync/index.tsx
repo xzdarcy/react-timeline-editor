@@ -1,4 +1,4 @@
-import { Timeline, TimelineState } from '@xzdarcy/react-timeline-editor';
+import { Timeline, TimelineState } from @rakesh.rk1/react-timeline-editor;
 import { cloneDeep } from 'lodash';
 import React, { useRef, useState } from 'react';
 import './index.less';

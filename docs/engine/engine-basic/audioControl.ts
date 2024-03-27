@@ -1,5 +1,5 @@
 import { Howl } from 'howler';
-import { TimelineEngine } from '@xzdarcy/react-timeline-editor';
+import { TimelineEngine } from @rakesh.rk1/react-timeline-editor;
 
 class AudioControl {
   cacheMap: Record<string, Howl> = {};

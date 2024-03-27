@@ -1,4 +1,4 @@
-import { Timeline } from '@xzdarcy/react-timeline-editor';
+import { Timeline } from '@rakesh.rk1/react-timeline-editor';
 import { cloneDeep } from 'lodash';
 import React, { useState } from 'react';
 import { CustomRender0 } from './custom2';
