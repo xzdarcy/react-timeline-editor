@@ -1,4 +1,4 @@
-import { TimelineEffect, TimelineRow, TimelineAction } from '@xzdarcy/react-timeline-editor';
+import { TimelineEffect, TimelineRow, TimelineAction } from @rakesh.rk1/react-timeline-editor;
 import lottieControl from './lottieControl';
 import audioControl from './audioControl';
 

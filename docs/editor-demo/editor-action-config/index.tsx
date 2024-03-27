@@ -1,4 +1,4 @@
-import { Timeline } from '@xzdarcy/react-timeline-editor';
+import { Timeline } from '@rakesh.rk1/react-timeline-editor';
 import { cloneDeep } from 'lodash';
 import React, { useState } from 'react';
 import { CustomRender0, CustomRender1 } from './custom';
@@ -18,10 +18,10 @@ const TimelineEditor = () => {
         effects={mockEffect}
         hideCursor={false}
         getActionRender={(action, row) => {
-          if(action.effectId === 'effect0') {
-            return <CustomRender0 action={action} row={row}/>
+          if (action.effectId === 'effect0') {
+            return <CustomRender0 action={action} row={row} />;
           } else if (action.effectId === 'effect1') {
-            return <CustomRender1 action={action} row={row}/>
+            return <CustomRender1 action={action} row={row} />;
           }
         }}
       />
