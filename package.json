@@ -1,7 +1,12 @@
 {
-  "name": "@xzdarcy/react-timeline-editor",
+  "name": "@mfoulks3200/react-timeline-editor",
   "version": "0.1.9",
-  "author": "xzdarcy",
+  "author": "Atlas Foulks <mfoulks1@gmail.com>",
+  "contributors": [
+    {
+      "name": "xzdarcy"
+    }
+  ],
   "license": "MIT",
   "keywords": [
     "timeline",
@@ -11,55 +16,73 @@
     "typescript"
   ],
   "bugs": {
-    "url": "https://github.com/xzdarcy/react-timeline-editor/issues"
+    "url": "https://github.com/mfoulks3200/react-timeline-editor/issues"
   },
-  "homepage": "https://github.com/xzdarcy/react-timeline-editor#readme",
+  "homepage": "https://github.com/mfoulks3200/react-timeline-editor#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xzdarcy/react-timeline-editor.git"
+    "url": "git+https://github.com/mfoulks3200/react-timeline-editor.git"
   },
   "scripts": {
-    "start": "dumi dev",
-    "docs:build": "dumi build",
-    "docs:deploy": "",
-    "build": "father-build",
+    "docs:dev": "storybook dev -p 6006",
+    "docs:build": "npx storybook build",
+    "build:webpack": "rm -rf ./dist && webpack -c ./webpack.config.ts",
     "deploy": "npm run docs:build && npm run docs:deploy",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "files": [
     "dist"
   ],
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
-  "typings": "dist/index.d.ts",
-  "peerDependencies": {
-    "react": "^15.3.0 || ^16.0.0-alpha || ^17.0.0 || ^18.0.0",
-    "react-dom": "^15.3.0 || ^16.0.0-alpha || ^17.0.0 || ^18.0.0"
-  },
+  "typings": "dist/dts/index.d.ts",
   "dependencies": {
     "@interactjs/types": "^1.10.11",
     "@types/react-virtualized": "^9.21.14",
     "framework-utils": "^1.1.0",
     "interactjs": "^1.10.11",
-    "react-virtualized": "^9.22.3"
+    "react-virtualized": "^9.22.3",
+    "vocs": "^1.0.0"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^3.2.5",
+    "@storybook/addon-essentials": "^8.6.4",
+    "@storybook/addon-interactions": "^8.6.4",
+    "@storybook/addon-onboarding": "^8.6.4",
+    "@storybook/addon-webpack5-compiler-swc": "^2.1.0",
+    "@storybook/blocks": "^8.6.4",
+    "@storybook/manager-api": "^8.6.4",
+    "@storybook/react": "^8.6.4",
+    "@storybook/react-webpack5": "^8.6.4",
+    "@storybook/test": "^8.6.4",
+    "@storybook/theming": "^8.6.4",
     "@types/howler": "^2.2.4",
     "@types/lodash": "^4.14.177",
     "@types/react": "^17.0.17",
     "@types/react-dom": "^17.0.17",
-    "@umijs/test": "^3.0.5",
     "antd": "^4.16.13",
-    "dumi": "^1.0.17",
-    "father-build": "^1.17.2",
+    "babel-loader": "^10.0.0",
+    "css-loader": "^7.1.2",
+    "esbuild": "^0.25.1",
     "gh-pages": "^3.0.0",
     "howler": "^2.2.3",
+    "less": "^4.2.2",
+    "less-loader": "^12.2.0",
     "lint-staged": "^10.0.7",
     "lodash": "^4.17.21",
     "lottie-web": "^5.8.1",
     "prettier": "^2.2.1",
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.2",
+    "storybook": "^8.6.4",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.8.2",
+    "vite-tsconfig-paths": "^5.1.4",
+    "webpack": "^5.98.0",
+    "webpack-cli": "^6.0.1",
+    "yaml": "^2.4.0",
     "yorkie": "^2.0.0"
   }
 }

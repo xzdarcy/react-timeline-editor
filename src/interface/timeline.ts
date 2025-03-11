@@ -10,11 +10,11 @@ export * from './effect';
 
 export interface EditData {
   /**
-   * @description 时间轴编辑数据
+   * @description The rows to be used in this timeline
    */
   editorData: TimelineRow[];
   /**
-   * @description 时间轴动作效果map
+   * @description An array of effects that can be applied to actions
    */
   effects: Record<string, TimelineEffect>;
   /**
@@ -205,38 +205,38 @@ export interface EditData {
 }
 
 export interface TimelineState {
-  /** dom节点 */
+  /** Editor DOM element */
   target: HTMLElement;
-  /** 运行监听器 */
+  /** Editor event emitter */
   listener: Emitter<EventTypes>;
-  /** 是否正在播放 */
+  /** `true` if the timeline is currently playing */
   isPlaying: boolean;
-  /** 是否暂停中 */
+  /** `true` if the timeline is currently paused */
   isPaused: boolean;
-  /** 设置当前播放时间 */
+  /** Set the time the playback head should jump to */
   setTime: (time: number) => void;
-  /** 获取当前播放时间 */
+  /** Get the current time of the playback head */
   getTime: () => number;
-  /** 设置播放速率 */
+  /** Set the rate at which the timeline should play (1 being real-time) */
   setPlayRate: (rate: number) => void;
-  /** 设置播放速率 */
+  /** Get the rate at which the timeline will play (1 being real-time) */
   getPlayRate: () => number;
-  /** 重新渲染当前时间 */
+  /** Trigger the component to re-render */
   reRender: () => void;
-  /** 播放 */
+  /** Start playing the timeline */
   play: (param: {
-    /** 默认从头运行到尾, 优先级大于autoEnd */
+    /** If set, stop once this time is reached */
     toTime?: number;
-    /** 是否播放完后自动结束 */
+    /** Whether to automatically stop after playing all actions */
     autoEnd?: boolean;
-    /** 运行的actionId列表，不穿默认全部运行 */
+    /** Automatically play specific action IDs */
     runActionIds?: string[];
   }) => boolean;
-  /** 暂停 */
+  /** Pause the timeline */
   pause: () => void;
-  /** 设置scroll left */
+  /** Set the left scroll offset of the timeline viewport */
   setScrollLeft: (val: number) => void;
-  /** 设置scroll top */
+  /** Set the top scroll offset of the timeline viewport */
   setScrollTop: (val: number) => void;
 }
 

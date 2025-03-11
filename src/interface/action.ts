@@ -36,6 +36,7 @@ export interface TimelineAction {
 export interface TimelineRow {
   /** 动作行id */
   id: string;
+  name?: string;
   /** 行的动作列表 */
   actions: TimelineAction[];
   /** 自定义行高 */
