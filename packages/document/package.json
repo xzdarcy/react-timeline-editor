@@ -1,0 +1,27 @@
+{
+  "name": "@xzdarcy/docs",
+  "version": "1.0.0",
+  "description": "Documentation for react-timeline-editor",
+  "scripts": {
+    "start": "dumi dev",
+    "build": "dumi build",
+    "deploy": "npm run build && gh-pages -d dist"
+  },
+  "dependencies": {
+    "@xzdarcy/react-timeline-editor": "workspace:^",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "dumi": "^2.4.21",
+    "father-build": "^1.22.5",
+    "gh-pages": "^6.1.1",
+    "typescript": "^5.2.2"
+  },
+  "peerDependencies": {
+    "react": ">=18.2.0",
+    "react-dom": ">=18.2.0"
+  }
+}

@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "node",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "importHelpers": true,
     "jsx": "react",
     "esModuleInterop": true,
@@ -21,7 +21,7 @@
     "lib",
     "es",
     "dist",
-    "docs",
+    "packages/documents",
     "typings",
     "**/__test__",
     "test",
