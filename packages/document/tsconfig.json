@@ -8,7 +8,8 @@
     "baseUrl": "../",
     "strict": false,
     "paths": {
-      "@xzdarcy/react-timeline-editor": ["src/index.tsx"]
+      "@xzdarcy/react-timeline-editor": ["src/index.tsx"],
+       "@@/*": [".dumi/tmp/*"]
     },
     "allowSyntheticDefaultImports": true
   },

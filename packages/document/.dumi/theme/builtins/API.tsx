@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
 import type { IApi } from 'dumi';
-// import { context, useApiData, AnchorLink } from 'dumi/theme';
+// import { useLocale } from 'dumi';
+import React from 'react';
 import '../style/api.less';
 
 const DataLink = {
@@ -32,11 +32,11 @@ const LOCALE_TEXTS = {
 };
 
 export default (api: IApi) => {
-  // const data = useApiData(identifier);
-  // const { locale } = useContext(context);
-  const texts = /^zh|cn$/i.test('locale')
-    ? LOCALE_TEXTS['zh-CN']
-    : LOCALE_TEXTS['en-US'];
+  // console.log(api.appData);
+  // const data = useAppData(identifier);
+  // const { locale } = useLocale();
+  // console.log(locale);
+  const texts = /^zh|cn$/i.test('locale') ? LOCALE_TEXTS['zh-CN'] : LOCALE_TEXTS['en-US'];
 
   return (
     <>
@@ -72,7 +72,7 @@ export default (api: IApi) => {
                           if (key) {
                             type = type.replace(key, '');
                             return (
-                              <AnchorLink key={index} to={DataLink[key] }>{key}</AnchorLink>
+                              <AnchorLink key={index} to={DataLink[key]}>{key}</AnchorLink>
                             );
                           }
                         }
